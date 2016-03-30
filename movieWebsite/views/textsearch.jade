@@ -1,0 +1,21 @@
+extends ../node_modules/jade-bootstrap/_bootstrap
+
+block body
+  +navbar("Colenso", "dropdown_menu", "inverse")
+    +nav_item("/") Home
+    +nav_item("/search") XQuery Search
+    +nav_item("/textsearch", "active") Text Search
+  .container
+    h1 Text Search
+    .container
+      form(action="/textsearch", method="get")
+        input(type="text", name="textSearchString", value=content, style='border: 1px solid #808080; border-radius: 5px; background-color: #f2f2f2;')
+        input(type="submit", value="Search", style='border: 1px solid #808080; border-radius: 5px; background-color: #d9d9d9;')
+    .container
+      p(style='margin-top: 25px; font-size: 20px;') 
+        | Results: 
+      each value in results
+        .resultBox(style='border: 3px solid #1a1a1a; padding: 20px; border-radius: 15px; margin-bottom: 15px; background-color: #f2f2f2;')
+          p !{value} 
+          textarea(name='XMLarea', rows=10, style='width: 100%; background-color: #ffffff')
+            | #{value}

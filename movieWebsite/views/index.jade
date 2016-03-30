@@ -1,12 +1,25 @@
 extends ../node_modules/jade-bootstrap/_bootstrap
 
 block body
-  +navbar("ECS Movies", "dropdown_menu")
+  +navbar("Colenso", "dropdown_menu", "inverse")
     +nav_item("/", "active") Home
-    +nav_item("/list") Stock
+    +nav_item("/search") XQuery Search
+    +nav_item("/textsearch") Text Search
   .container
     h1= title
     .container
-    p| Welcome to #{title}. We have things.
-    p| We are based in !{place}. 
-     //used to be #{place} to show whole query
+    | Welcome to the #{title}.
+    p| This project is a digital compilation of the written works of William Colenso, a notable Christian missionary and polititian in 19th century New Zealand.
+    p| Choose from the menu options at the top of the page, or enter your search terms here:
+  .container(style='margin-top: 20px;')
+    | XQuery Search
+  .container
+    form(action="/search", method="get")
+      input(type="text", name="searchString", style='border: 1px solid #808080; border-radius: 5px; background-color: #f2f2f2;')
+      input(type="submit", value="Search", style='border: 1px solid #808080; border-radius: 5px; background-color: #d9d9d9;')
+  .container(style='margin-top: 10px;')
+    | Text Search
+  .container
+    form(action="/textsearch", method="get")
+      input(type="text", name="textSearchString", style='border: 1px solid #808080; border-radius: 5px; background-color: #f2f2f2;')
+      input(type="submit", value="Search", style='border: 1px solid #808080; border-radius: 5px; background-color: #d9d9d9;')
